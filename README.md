@@ -1,89 +1,165 @@
+<body>
+    <table border="1">
+        <tr>
+            <th> Nama</th>
+            <th>NIM</th>
+            <th>Kelas</th>
+        </tr>
+        <tr>
+            <td>Ahmad Syukron</td>
+            <td>312110056</td>
+            <td>TI.21.A.1</td>
+        </tr>
+    </table>
+</body>
 
-Nama : Ahmad Syukron<p>
-NIM  : 312110056<p>
+# Dictonary Python
 
-### Program nilai random
-1. Tampilkan n bilangan acak yang lebih kecil dari 0.5.
-2. nilai n diisi pada saat runtime
-3. anda bisa menggunakan kombinasi while dan for untuk menyelesaikannya
-4. gunakan fungsi random() yang dapat diimport terlebih dahulu
-- <b>Program</b><p>
+## Tugas Latihan
+- <b>Soal</b><p>
+![Gambar 00](Image/TLatihan.PNG)<p>
+
+- <b>Codiingan</b><p>
 ```bash
-from random import random
-n = int(input("Masukkan nilai N: "))
-for i in range(n):
-    while 1:
-        n = random()
-        if (n < 0.5):
-            break
-    print("data ke: ",i, "=>",n)
-print("Selesai")
+# Latihan 1
+
+a = {'Ari':'081267888', 'Dina':'087654588'}  # Nama sebagai key, dan nomor sebagai value
+print ("Buat Dictionary daftar kontak")
+print ("Nama | Nomor Telpon")
+
+print ("Menampilkan dictonary kontak")
+print (a)
+print (50*"-")
+
+print ("Tampilkan kontak Ari")
+print (a['Ari']) #Tampilkan kontak Ari
+print (50*"-")
+
+print ("Menambah kontak baru dengan nama Riko, nomor 087654544")
+a.update({'Riko':'087654544'}) #Menambah kontak baru dengan nama Riko, nomor 087654544
+print (a)
+print (50*"-")
+
+print ("mengubah kontak Dina dengan nomor baru 088999776")
+a['Dina'] = '088999776' # mengubah kontak Dina dengan nomor baru 088999776
+print (a)
+print (50*"-")
+
+print ("Tampilkan semua nama")
+print(a.keys()) #Tampilkan semua nama
+print (50*"-")
+
+print ("Tampilkan semua nomor")
+print(a.values()) #Tampilkan semua nomor
+print (50*"-")
+
+print ("Tampilkan daftar Nama dan nomornya")
+print (a.items()) #Tampilkan daftar Nama dan nomornya
+print (50*"-")
+
+print ("Menghapus kontak Dina")
+del a['Dina'] #Menghapus kontak Dina
+print(a)
 ```
-![Gambar 01](Image/NilaiRandom.PNG)<P>
-- <b>Hasil program</b><p>
-![Gambar 02](Image/HasilNilaiRandom.PNG)<P>
-<p>
+- <b>Tampilan Hasil Program</b><p>
+![Gambar 01](Image/HLatihan.PNG)<p>
 
-## Latihan 2
-### Program mencari bilangan terbesar
-1. Buat program untuk menampilkan bilangan terbesar dari n buah data yang diinputkan. Masukkan angka 0 untuk berhenti.<P>
-- <b>program</b><p>
+
+## Tugas Pratikum
+- <b>Soal</b><p>
+![Gambar 02](Image/TPratikum.PNG)<p>
+
+- <b>Codingan</b><p>
+
 ```bash
-max = 0
+x = {}
+
 while True:
-    n = int(input("Masukkan bilangan: "))
-    if max < n :
-        max = n
-    if n == 0:
+    header="PROGRAM INPUT NILAI MAHASISWA"
+    print(header.center(97,"="))
+    print()
+    print("[ (L)ihat, (T)ambah, (U)bah, (H)apus, (C)ari, (K)eluar")
+    c = input("Masukkan Pilihan: ")
+
+    if c == 'T' or c == 't':
+        print("TAMBAH DATA")
+        nim = int(input("Masukkan NIM\t\t: "))
+        nama = input("Masukkan Nama\t\t: ")
+        tugas = int(input("Masukkan Nilai Tugas\t: "))
+        uts = int(input("Masukkan Nilai UTS\t: "))
+        uas = int(input("Masukkan Nilai UAS\t: "))
+        akhir = tugas*.3 + uts*.35 + uas*.35
+        x[nama] = nim, uts, uas, tugas, akhir
+
+    elif c == 'U' or c == 'u':
+        print("UBAH DATA")
+        print("Cari Data Mahasiswa Menggunakan Nama")
+        nama = input("Masukkan Nama Mahasiswa: ")
+        if nama in x.keys():
+            nim = int(input("Masukkan NIM yang benar\t\t: "))
+            tugas = int(input("Masukkan Nilai Tugas yang benar\t: "))
+            uts = int(input("Masukkan Nilai UTS yang benar\t: "))
+            uas = int(input("Masukkan Nilai UAS yang benar\t: "))
+            akhir = tugas*.3 + uts*.35 + uas*.35
+            x[nama] = nim, uts, uas, tugas, akhir
+        else:
+            print("Nama {0} tidak ditemukan".format(nama))
+
+    elif c == 'h' or c == 'H':
+        print("HAPUS DATA")
+        nama = input("Masukkan Nama untuk menghapus: ")
+        if nama in x.keys():
+            del x[nama]
+        else:
+            print("Nama {0} Tidak Ditemukan".format(nama))
+
+    elif c == 'C' or c == 'c':
+        print("CARI DATA")
+        nama = input("Masukkan Nama : ")
+        if nama in x.keys():
+            print("="*73)
+            print("|                             Daftar Mahasiswa                          |")
+            print("="*73)
+            print("| Nama            |       NIM       |  UTS  |  UAS  |  Tugas  |  Akhir  |")
+            print("="*73)
+            print("| {0:15s} | {1:15d} | {2:5d} | {3:5d} | {4:7d} | {5:7.2f} |"
+                  .format(nama, nim, uts, uas, tugas, akhir))
+            print("="*73)
+        else:
+            print("Nama {0} Tidak Ditemukan".format(nama))
+
+    elif c == 'L' or c == 'l':
+        if x.items():
+            print("="*78)
+            print("|                               Daftar Mahasiswa                             |")
+            print("="*78)
+            print("|No. | Nama            |       NIM       |  UTS  |  UAS  |  Tugas  |  Akhir  |")
+            print("="*78)
+            i = 0
+            for z in x.items():
+                i += 1
+                print("| {no:2d} | {0:15s} | {1:15d} | {2:5d} | {3:5d} | {4:7d} | {5:7.2f} |"
+                      .format(z[0][:13], z[1][0], z[1][1], z[1][2], z[1][3], z[1][4], no=i))
+            print("=" * 78)
+        else:
+            print("="*78)
+            print("|                               Daftar Mahasiswa                             |")
+            print("="*78)
+            print("|No. | Nama            |       NIM       |  UTS  |  UAS  |  Tugas  |  Akhir  |")
+            print("="*78)
+            print("|                                TIDAK ADA DATA                              |")
+            print("="*78)
+
+    elif c. lower() == 'k':
         break
-print("Bilangan terbesar adalah: ",max)
+
+    else:
+        print("Pilih menu yang tersedia")
+
 ```
-![Gambar 03](Image/NilaiTerbesar.PNG)<p>
-- <b>penjelasan</b><p>
-max () adalah fungsi bulid-in untuk mencari nilai tertinggi<p>
 - <b>Hasil Program</b><p>
-![Gambar 04](Image/HasilNilaiTerbesar.PNG)
+![Gambar 03](Image/HPratikum.PNG)
 <p>
 
-## Latihan 3
-### Program perulangan bertingkat
-- <b>Program input</b><p>
-```bash
-for i in range(0, 10):
-  for j in range(10):
-    print('%3d'%(i+j), end = ' ')
-  print(' ')
-```
-![Gambar 07](Image/PerulanganBertingkat.PNG)
-- <b>Hasil program</b><p>
-![Gambar 08](Image/HasilPerulanganBertingkat.PNG)
-<p>
-
-## Program 1
-### program sederhana dengan perulangan
-- <b>Seorang pengusaha menginvestasikan uangnya untuk memulai usahanya dengan modal awal 100 juta, pada bulan pertama dan kedua belum mendapatkan laba. pada bulan ketiga baru mulai mendapatkan laba sebesar 1% dan pada bulan ke 5, pendapatan meningkat 5%, selanjutnya pada bulan ke 8 mengalami penurunan keuntungan sebesar 2%, sehingga laba menjadi 3%. Hitung total keuntungan selama 8 bulan berjalan usahanya.</b><p>
-- <b>program input</b><p>
-```bash
-a = 100000000
-for i in range(1, 9):
-    if (i >= 1 and i <= 2):
-        b = a * 0
-        print("Laba bulan ke- ", i, "Sebesar: ", b)
-    if (i >= 3 and i <= 4):
-        c = a * 0.1
-        print("Laba bulan ke- ", i, "sebesar: ", c)
-    if (i >= 5 and i <= 7):
-        d = a * 0.5
-        print("Laba bulan ke- ", i, "sebesar: ", d)
-    if (i == 8):
-        e = a * 0.2
-        print("Laba bulan ke- ", i, "sebesar: ", e)
-        total = b + b + c + c + d + d + d + e
-        print = ("\nTotal : ", total)
-```
-![Gambar 05](Image/Hitung.PNG)
-- <b>Hasil program</b><p>
-![Gambar 06](Image/HasilHitung.PNG)
-<p>
-
-# Terima Kasih
+# END
+![Gambar 04](Image/anime-love.gif)
