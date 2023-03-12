@@ -17,7 +17,7 @@
 
 ## Tugas Latihan
 - <b>Soal</b><p>
-![Gambar 00](Image/TLatihan.PNG)<p>
+![Gambar 00](Image/Tugas.png)<p>
 
 - <b>index.html</b><p>
 ```bash
@@ -173,105 +173,272 @@
   </body>
 </html>
 ```
-- <b>Tampilan Hasil Program</b><p>
-![Gambar 01](Image/HLatihan.PNG)<p>
 
 
-## Tugas Pratikum
-- <b>Soal</b><p>
-![Gambar 02](Image/TPratikum.PNG)<p>
+## Style
 
-- <b>Codingan</b><p>
+- <b>Style.css</b><p>
 
 ```bash
-x = {}
+/* Import google font */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
 
-while True:
-    header="PROGRAM INPUT NILAI MAHASISWA"
-    print(header.center(97,"="))
-    print()
-    print("[ (L)ihat, (T)ambah, (U)bah, (H)apus, (C)ari, (K)eluar")
-    c = input("Masukkan Pilihan: ")
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:ital,wght@0,300;0,700;1,300&display=swap');
 
-    if c == 'T' or c == 't':
-        print("TAMBAH DATA")
-        nim = int(input("Masukkan NIM\t\t: "))
-        nama = input("Masukkan Nama\t\t: ")
-        tugas = int(input("Masukkan Nilai Tugas\t: "))
-        uts = int(input("Masukkan Nilai UTS\t: "))
-        uas = int(input("Masukkan Nilai UAS\t: "))
-        akhir = tugas*.3 + uts*.35 + uas*.35
-        x[nama] = nim, uts, uas, tugas, akhir
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+}
 
-    elif c == 'U' or c == 'u':
-        print("UBAH DATA")
-        print("Cari Data Mahasiswa Menggunakan Nama")
-        nama = input("Masukkan Nama Mahasiswa: ")
-        if nama in x.keys():
-            nim = int(input("Masukkan NIM yang benar\t\t: "))
-            tugas = int(input("Masukkan Nilai Tugas yang benar\t: "))
-            uts = int(input("Masukkan Nilai UTS yang benar\t: "))
-            uas = int(input("Masukkan Nilai UAS yang benar\t: "))
-            akhir = tugas*.3 + uts*.35 + uas*.35
-            x[nama] = nim, uts, uas, tugas, akhir
-        else:
-            print("Nama {0} tidak ditemukan".format(nama))
+body {
+    line-height:1;
+    font-size:100%;
+    font-family:'Open Sans', sans-serif;
+    color:#5a5a5a;
+}
 
-    elif c == 'h' or c == 'H':
-        print("HAPUS DATA")
-        nama = input("Masukkan Nama untuk menghapus: ")
-        if nama in x.keys():
-            del x[nama]
-        else:
-            print("Nama {0} Tidak Ditemukan".format(nama))
+#container {
+    width: 980px;
+    margin: 0 auto;
+    box-shadow: 0 0 1em #cccccc;
+}
 
-    elif c == 'C' or c == 'c':
-        print("CARI DATA")
-        nama = input("Masukkan Nama : ")
-        if nama in x.keys():
-            print("="*73)
-            print("|                             Daftar Mahasiswa                          |")
-            print("="*73)
-            print("| Nama            |       NIM       |  UTS  |  UAS  |  Tugas  |  Akhir  |")
-            print("="*73)
-            print("| {0:15s} | {1:15d} | {2:5d} | {3:5d} | {4:7d} | {5:7.2f} |"
-                  .format(nama, nim, uts, uas, tugas, akhir))
-            print("="*73)
-        else:
-            print("Nama {0} Tidak Ditemukan".format(nama))
+/* Header */
+header {
+    padding: 20px;  
+}
 
-    elif c == 'L' or c == 'l':
-        if x.items():
-            print("="*78)
-            print("|                               Daftar Mahasiswa                             |")
-            print("="*78)
-            print("|No. | Nama            |       NIM       |  UTS  |  UAS  |  Tugas  |  Akhir  |")
-            print("="*78)
-            i = 0
-            for z in x.items():
-                i += 1
-                print("| {no:2d} | {0:15s} | {1:15d} | {2:5d} | {3:5d} | {4:7d} | {5:7.2f} |"
-                      .format(z[0][:13], z[1][0], z[1][1], z[1][2], z[1][3], z[1][4], no=i))
-            print("=" * 78)
-        else:
-            print("="*78)
-            print("|                               Daftar Mahasiswa                             |")
-            print("="*78)
-            print("|No. | Nama            |       NIM       |  UTS  |  UAS  |  Tugas  |  Akhir  |")
-            print("="*78)
-            print("|                                TIDAK ADA DATA                              |")
-            print("="*78)
+header h1 {
+    margin: 20px 10px;
+    color: #b5b5b5;
+}
 
-    elif c. lower() == 'k':
-        break
+/* Navigasi */
+nav {
+    display: block;
+    background-color: #1f5faa;
+}
 
-    else:
-        print("Pilih menu yang tersedia")
+nav a {
+    padding: 15px 30px;
+    display: inline-block;
+    color: #ffffff;
+    font-size: 14px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a.active,
+nav a:hover {
+    background-color: #2b83ea;
+}
+
+/* Hero Panel */
+#hero {
+    background-color: #e4e4e5;
+    padding: 50px 20px;
+    margin-bottom: 20px;
+}
+#hero h1 {
+    margin-bottom: 20px;
+    font-size: 35px;
+    color: #0a0a0a;
+}
+#hero p {
+    margin-bottom: 20px;
+    font-size: 18px;
+    line-height: 25px;
+}
+
+/* Main Content */
+#wrapper {
+    margin: 0;
+}
+
+#main {
+    float: left;
+    width: 640px;
+    padding: 20px;
+}
+
+/* Sidebar Area */
+#sidebar {
+    float: left;
+    width: 260px;
+    padding: 20px;
+}
+
+/* Widget */
+.widget-box {
+    border:1px solid #eee;
+    margin-bottom:20px;
+}
+
+.widget-box .title {
+    padding:10px 16px;
+    background-color:#428bca;
+    color:#fff;
+}
+
+.widget-box ul {
+    list-style-type:none;
+}
+
+.widget-box li {
+    border-bottom:1px solid #eee;
+}
+
+.widget-box li a {
+    padding:10px 16px;
+    color:#333;
+    display:block;
+    text-decoration:none;
+}
+
+.widget-box li:hover a {
+    background-color:#eee;
+}
+
+.widget-box p {
+    padding:15px;
+    line-height:25px;
+}
+
+/* Box */
+.box {
+    display:block;
+    float:left;
+    width:33.333333%;
+    box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    padding:0 10px;
+    text-align:center;
+}
+
+.box h3 {
+    margin: 15px 0;
+}
+
+.box p {
+    line-height: 20px;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.box img {
+    border: 0;
+    vertical-align: middle;
+}
+
+.image-circle {
+    border-radius: 50%;
+}
+
+.row {
+    margin: 0 -10px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+.row:after, .row:before,
+.entry:after, .entry:before {
+    content:'';
+    display:table;
+}
+
+.row:after,
+.entry:after {
+    clear:both;
+}
+
+/* Article */
+.divider {
+    border:0;
+    border-top:1px solid #eeeeee;
+    margin:40px 0;
+}
+
+/* entry */
+.entry {
+    margin: 15px 0;
+}
+
+.entry h2 {
+    margin-bottom: 20px;
+}
+
+.entry p {
+    line-height: 25px;
+}
+
+.entry img {
+    float: left;
+    border-radius: 5px;
+    margin-right: 15px;
+}
+
+.entry .right-img {
+    float: right;
+}
+
+/* Footer */
+footer {
+  clear:both;
+  background-color:#1d1d1d;
+  padding:20px;
+  color:#eee;
+}
+
+/* Button */
+
+.button {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #317CFF;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 16px;
+  padding: 10px;
+  width: 140px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button-img {
+  padding: 5px;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
 
 ```
-- <b>Hasil Program</b><p>
-![Gambar 03](Image/HPratikum.PNG)
-<p>
 
 # END
 ![Gambar 04](Image/anime-love.gif)
